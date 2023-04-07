@@ -566,6 +566,11 @@ class CollapsibleCalendar : UICalendar, View.OnClickListener {
         }
     }
 
+    fun testFuc()
+    {
+
+    }
+
     fun expand(duration: Int) {
         if (state == STATE_COLLAPSED) {
             state = STATE_PROCESSING
