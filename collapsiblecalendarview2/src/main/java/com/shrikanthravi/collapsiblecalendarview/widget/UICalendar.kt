@@ -59,6 +59,17 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
                 mTableHead.visibility = View.GONE
             }
         }
+    var isShowTopBar = true
+        set(showTopBar) {
+            field = showTopBar
+
+            if (showTopBar) {
+                clEntireTextView.visibility = View.VISIBLE
+            } else {
+                clEntireTextView.visibility = View.GONE
+            }
+        }
+
     var firstDayOfWeek = SUNDAY
         set(firstDayOfWeek) {
             field = firstDayOfWeek
@@ -238,6 +249,7 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
         // set attributes by the values from XML
         //setStyle(attrs.getInt(R.styleable.UICalendar_style, mStyle));
         isShowWeek = attrs.getBoolean(R.styleable.UICalendar_showWeek, isShowWeek)
+        isShowTopBar = attrs.getBoolean(R.styleable.UICalendar_showTopBar, isShowTopBar)
         firstDayOfWeek = attrs.getInt(R.styleable.UICalendar_firstDayOfWeek, firstDayOfWeek)
         hideArrow = attrs.getBoolean(R.styleable.UICalendar_hideArrows, hideArrow)
         datePattern = attrs.getString(R.styleable.UICalendar_datePattern).let {
@@ -313,11 +325,6 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
         expandIconView.setColor(color)
     }
 
-    fun setTopBarVisibility(value: Boolean){
-        this.hideTopBar(value)
-        redraw()
-    }
-
     abstract fun changeToToday()
 
     companion object {
@@ -335,13 +342,5 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
         val STATE_EXPANDED = 0
         val STATE_COLLAPSED = 1
         val STATE_PROCESSING = 2
-    }
-
-    fun hideTopBar(value: Boolean)
-    {
-        if(value)
-            cl_title.visibility = View.INVISIBLE;
-        else
-            cl_title.visibility = View.VISIBLE;
     }
 }

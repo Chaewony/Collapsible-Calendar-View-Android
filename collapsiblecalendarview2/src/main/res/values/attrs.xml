@@ -15,6 +15,7 @@
     <declare-styleable name="UICalendar">
 
         <attr name="showWeek" format="boolean" />
+        <attr name="showTopBar" format="boolean" />
         <attr name="hideArrows" format="boolean" value="true"/>
         <attr name="datePattern" format="string" value="MMMM"/>
 
