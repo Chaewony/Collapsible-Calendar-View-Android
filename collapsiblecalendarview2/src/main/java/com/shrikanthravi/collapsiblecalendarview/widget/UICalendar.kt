@@ -17,7 +17,7 @@ import com.shrikanthravi.collapsiblecalendarview.view.LockScrollView
 import com.shrikanthravi.collapsiblecalendarview.view.OnSwipeTouchListener
 import java.util.*
 import android.os.Build
-
+import kotlinx.android.synthetic.main.widget_collapsible_calendarview.view.*
 
 
 @SuppressLint("ClickableViewAccessibility")
@@ -331,5 +331,12 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
         val STATE_PROCESSING = 2
     }
 
-
+    fun hideTopBar(value: Boolean)
+    {
+        if(value)
+            cl_title.visibility = View.INVISIBLE;
+        else
+            cl_title.visibility = View.VISIBLE;
+        redraw();
+    }
 }
