@@ -69,6 +69,7 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
             field = value
             hideButton()
         }
+
     open var state = STATE_COLLAPSED
         set(state) {
             field = state
@@ -312,6 +313,11 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
         expandIconView.setColor(color)
     }
 
+    fun setTopBarVisibility(value: Boolean){
+        this.hideTopBar(value)
+        redraw()
+    }
+
     abstract fun changeToToday()
 
     companion object {
@@ -337,6 +343,5 @@ abstract class UICalendar constructor(context: Context, attrs: AttributeSet? = n
             cl_title.visibility = View.INVISIBLE;
         else
             cl_title.visibility = View.VISIBLE;
-        redraw();
     }
 }
